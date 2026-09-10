@@ -15,7 +15,7 @@ feature-based architecture, git hooks, CI, and documents that describe it
 exactly. The rules themselves live in `assets/` as working files; this page is
 the order to apply them in and the bar each step must clear.
 
-Two ideas run through every step:
+Three ideas run through every step:
 
 - **Automate what is boring.** Formatting, import order, commit messages and
   branch names are checked by tooling, because nobody should spend review
@@ -24,9 +24,16 @@ Two ideas run through every step:
 - **Verify from a fresh clone.** A warm working tree hides missing generated
   files. Before calling any step done, run it as CI would:
   `rm -rf .next next-env.d.ts`, then the commands.
+- **The official docs are current; this skill may not be.** The assets carry
+  the conventions. The config formats, option names, install commands and
+  versions used to reach them come from each tool's official documentation,
+  read now, for the version actually installed. Where the two disagree, keep the
+  convention and follow the docs.
 
 Read [references/gotchas.md](references/gotchas.md) before you start. Every
-entry in it is a trap that looked like success the first time.
+entry in it is a trap that looked like success the first time. Read
+[references/sources.md](references/sources.md) too: it names the official source
+to check for each asset, and what to look for there.
 
 ## Placeholders
 
@@ -46,11 +53,31 @@ The assets use these. Fill every one before writing a file.
 Placeholders are always `{{UPPER_SNAKE_CASE}}`. `${{ github.ref }}` in the CI
 workflow is GitHub Actions syntax, not a placeholder — leave it as it is.
 
+## Checking an asset against the docs
+
+Before writing any asset into the repository, check it against the official
+source [references/sources.md](references/sources.md) names for it:
+
+- Install every package without a version, so it resolves to the latest stable
+  release, unless a compatibility check says otherwise. Never copy a version
+  out of an asset or a reference.
+- For each GitHub Action, use the latest major:
+  `gh release view --repo <owner>/<action> --json tagName`.
+- For each config, confirm its format, file name and every option it sets
+  against the docs for the installed version. After a major upgrade since the
+  asset was written, read the tool's migration guide first.
+- Treat the examples in the assets the same way: an example that shows an API
+  the docs no longer recommend is rewritten to the current one.
+
+Every difference you act on goes to the user in chat and into the pull request
+as asset → what changed → why.
+
 ## 1. Gather the inputs
 
 Derive what the environment already says: owner and repo from `git remote -v`,
 the pnpm version from `packageManager`, the Node version from `node -v`, the
-Next.js version from `package.json`.
+Next.js version from `package.json`. Compare each against its latest release,
+and tell the user about any that is behind before building on it.
 
 Ask the user, in one message, for what it cannot say: the branch prefix, and a
 paragraph on what the product is and who it is for. Then derive the glossary and
@@ -80,8 +107,9 @@ commit holding the README, then branch.
   [assets/github/workflows/ci.yml](assets/github/workflows/ci.yml) under
   `.github/`.
 
-**Done when** `pnpm lint`, `pnpm typecheck` and `pnpm build` each exit 0 from a
-fresh clone.
+**Done when** each asset above has been checked against its official source,
+and `pnpm lint`, `pnpm typecheck` and `pnpm build` each exit 0 from a fresh
+clone.
 
 ## 4. Automate what is boring
 
@@ -97,7 +125,8 @@ fresh clone.
 - Rewrite every relative import in `src/` through the `@/` alias, stylesheets
   included.
 
-**Done when** each probe behaves as stated, and the probe files are gone:
+**Done when** each asset above has been checked against its official source,
+each probe behaves as stated, and the probe files are gone:
 
 - Committing a file with unsorted, unformatted imports lands it sorted and
   formatted.
@@ -123,7 +152,10 @@ because each leans on the one before:
    [assets/github/](assets/github/), into `.github/`.
 
 Rewrite every example in the assets — `Order`, `order-checkout-form.tsx`,
-`MAX_ORDER_ITEMS` — into the project's own glossary terms.
+`MAX_ORDER_ITEMS` — into the project's own glossary terms. Check every framework
+mechanism a document names — `server-only`, `"use server"`, Next's special
+files, caching — against the current Next.js docs, and correct the document
+where the framework has moved.
 
 Each document answers one question: the README what this is and how to start
 it, `CONTRIBUTING.md` how to contribute, `docs/code-standards.md` how code is
@@ -167,6 +199,10 @@ instead.
 - **Architecture and naming stay prose.** Add no lint plugin for boundaries,
   file names or identifier case; `docs/code-standards.md` holds them and review
   enforces them.
+- **Current official documentation wins over this skill.** An asset, example or
+  gotcha that contradicts the docs for the installed version is out of date:
+  keep its intent, follow the docs, and report the difference. When the docs
+  cannot be reached, say so rather than assuming the asset is still right.
 - **A dependency arrives the day something uses it.**
 - **A config keeps only what it adds** over the preset it extends.
 - **Every change travels issue → branch → pull request**, your own follow-up
