@@ -92,6 +92,10 @@ Good:  [Bug]: analytics reports data from non-production environments
 Bad:   fix(analytics): analytics reports data from non-production environments
 ```
 
+### Specs and tickets
+
+Specs published by the `to-spec` agent skill and tickets published by `to-tickets` are issues too. They keep their own templates and titles, carry the `ready-for-agent` label, and state their acceptance criteria like any form. A ticket scopes a branch the way any issue does. A spec is closed by hand once its last ticket has merged, since no pull request closes it.
+
 ## PR flow
 
 1. Create a branch from `main` following the naming convention above

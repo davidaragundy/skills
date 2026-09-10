@@ -70,7 +70,8 @@ conflicts with this skill:
   the root, and one `app/`, `features/`, `shared/` tree under `src/`. A
   multi-context layout is a conflict.
 - **Triage labels.** When `docs/agents/triage-labels.md` exists, use its label
-  for the `needs-triage` role wherever the assets say `needs-triage`.
+  for each role wherever the assets name one — `needs-triage` and
+  `ready-for-agent`.
 
 **Done when** the setup's files exist and neither conflict applies, or the user
 has said to go on without them.
@@ -202,6 +203,12 @@ because each leans on the one before:
    [assets/github/](assets/github/), into `.github/`, with the triage label
    from `docs/agents/triage-labels.md` when it exists.
 
+Create every label the issue forms apply, and the `ready-for-agent` label that
+`to-spec` and `to-tickets` apply, where the repository lacks it:
+`gh label create <name>`. `gh` refuses to open an issue with a label that does
+not exist. When neither `to-spec` nor `to-tickets` is installed, leave out
+`ready-for-agent` and the "Specs and tickets" section of `CONTRIBUTING.md`.
+
 `CONTEXT.md` and the ADR follow the formats the `domain-modeling` skill in
 mattpocock/skills uses, so the engineering skills can extend them later. Keep
 them in those formats.
@@ -240,7 +247,11 @@ merged branch.
 
 Every later change takes the same road. The playbook's `ship-change` skill
 takes it from issue to cleanup, and `build-feature` writes the code in between;
-recommend them to the user if they are not installed.
+recommend them to the user if they are not installed. Upstream of both, Matt
+Pocock's `grill-with-docs`, `to-spec` and `to-tickets` turn an idea into a
+spec and tickets; the
+[workflow guide](https://github.com/davidaragundy/skills/blob/main/docs/workflow.md)
+shows the whole flow.
 
 ## Guardrails
 
