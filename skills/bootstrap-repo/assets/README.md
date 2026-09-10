@@ -35,7 +35,6 @@ branch names are checked from your first commit.
 | `pnpm start`     | Serve a production build                |
 | `pnpm lint`      | eslint across the repository            |
 | `pnpm typecheck` | Generates route types, then type-checks |
-| `pnpm test`      | vitest, once, non-watching              |
 
 Use the pnpm scripts rather than `npx`, which can resolve a different version
 than the `packageManager` field pins.

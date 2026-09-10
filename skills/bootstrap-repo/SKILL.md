@@ -76,13 +76,12 @@ commit holding the README, then branch.
 - `.node-version` holds the exact output of `node -v`, without the `v`.
 - Merge [assets/package.fragment.json](assets/package.fragment.json) into
   `package.json`.
-- Install `vitest` and add [assets/vitest.config.mts](assets/vitest.config.mts).
 - Add [assets/github/CODEOWNERS](assets/github/CODEOWNERS) and
   [assets/github/workflows/ci.yml](assets/github/workflows/ci.yml) under
   `.github/`.
 
-**Done when** `pnpm lint`, `pnpm typecheck`, `pnpm test` and `pnpm build` each
-exit 0 from a fresh clone.
+**Done when** `pnpm lint`, `pnpm typecheck` and `pnpm build` each exit 0 from a
+fresh clone.
 
 ## 4. Automate what is boring
 
@@ -168,10 +167,7 @@ instead.
 - **Architecture and naming stay prose.** Add no lint plugin for boundaries,
   file names or identifier case; `docs/code-standards.md` holds them and review
   enforces them.
-- **Tests assert this project's behaviour.** A test proving that a third-party
-  tool works is not written, and is deleted if found.
-- **A dependency arrives the day something uses it.** The DOM test stack waits
-  for the first component test.
+- **A dependency arrives the day something uses it.**
 - **A config keeps only what it adds** over the preset it extends.
 - **Every change travels issue → branch → pull request**, your own follow-up
   fixes included. The issue scopes the branch, not the commit, so changes made
