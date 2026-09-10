@@ -95,14 +95,16 @@ fresh clone.
   [assets/prettierignore](assets/prettierignore) as `.prettierignore`.
 - If the project uses Tailwind CSS, install `prettier-plugin-tailwindcss` and
   add [assets/prettierrc.json](assets/prettierrc.json) as `.prettierrc`. Its
-  `tailwindStylesheet` points at the stylesheet holding `@import "tailwindcss"`,
-  relative to `.prettierrc`; drop the key on Tailwind v3, which reads
-  `tailwind.config.js` instead. Without Tailwind, add neither: Prettier's
-  defaults are the configuration.
+  `tailwindStylesheet` points at `src/shared/styles/globals.css`, relative to
+  `.prettierrc`; drop the key on Tailwind v3, which reads `tailwind.config.js`
+  instead. Without Tailwind, add neither: Prettier's defaults are the
+  configuration.
 - Run `pnpm exec husky init`, then copy the three files in
   [assets/husky/](assets/husky/) into `.husky/` and make each executable.
+- Move `src/app/globals.css` to `src/shared/styles/globals.css`: `app/` only
+  composes, and nothing imports from it.
 - Rewrite every relative import in `src/` through the `@/` alias, stylesheets
-  included.
+  included — the root layout imports `@/shared/styles/globals.css`.
 
 **Done when** each probe behaves as stated, and the probe files are gone:
 
