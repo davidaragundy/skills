@@ -34,6 +34,7 @@ npx skills add https://github.com/mattpocock/skills --skill setup-matt-pocock-sk
 | Skill                                                   | What it does                                                                                                                                   |
 | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`setup-nextjs-playbook`](skills/setup-nextjs-playbook/) | Sets up a Next.js repository to follow the playbook: the feature-based architecture, code standards, contribution flow, git hooks, CI and documentation. Run once. |
+| [`ship-change`](skills/ship-change/)                     | Takes every later change through the playbook's flow: issue, branch, Conventional Commits, pull request, and the check after the merge.        |
 
 ## Layout
 
