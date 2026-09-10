@@ -1,6 +1,6 @@
 ---
 name: setup-nextjs-playbook
-description: Sets up a Next.js App Router repository to follow the Next.js playbook — an opinionated feature-based architecture, code standards, and a contribution flow from issue to branch to pull request — with the git hooks, CI and documentation that hold it in place. Run once, when starting a Next.js project, or when asked to establish its architecture, conventions, commit and branch rules, hooks or contributing docs.
+description: Sets up a Next.js App Router repository to follow the Next.js playbook — an opinionated feature-based structure and code standards, plus the repository's commit, branch and pull request rules — with the git hooks, CI and documentation that hold them in place. Run once, when starting a Next.js project, or when asked to establish its architecture, conventions, commit and branch rules, hooks or contributing docs.
 license: MIT
 compatibility: Built for GitHub repositories using pnpm, git and the gh CLI. The architecture and tooling assets target Next.js with the App Router. Runs after setup-matt-pocock-skills from mattpocock/skills.
 metadata:
@@ -10,12 +10,13 @@ metadata:
 
 # Set up the Next.js playbook
 
-The Next.js playbook is an opinionated way to build with Next.js: a
-feature-based architecture, the rules code is written by, and the flow every
-change takes from issue to merge. This skill sets it up, once. It turns a fresh
-repository into one with a written contribution process, that architecture, git
-hooks, CI, and documents that describe it exactly. The rules themselves live in `assets/` as working files; this page is
-the order to apply them in and the bar each step must clear.
+The Next.js playbook is opinionated about how a Next.js repository is
+structured and the standards its code is written to; the workflow is Matt
+Pocock's engineering skills, left as they are. This skill sets the playbook up,
+once. It turns a fresh repository into one with a feature-based structure, code
+standards, written contribution rules, git hooks, CI, and documents that
+describe it exactly. The rules themselves live in `assets/` as working files;
+this page is the order to apply them in and the bar each step must clear.
 
 Three ideas run through every step:
 
@@ -238,9 +239,11 @@ merged branch.
 
 **Done when** the merged head matches your tip and the branch is gone.
 
-Every later change takes the same road. The playbook's `ship-change` skill
-takes it from issue to cleanup, and `build-feature` writes the code in between;
-recommend them to the user if they are not installed.
+The work after the setup follows Matt Pocock's engineering skills —
+`grill-with-docs`, `to-spec`, `to-tickets`, `implement` — as he designed them.
+The playbook's part in it is the documents this skill wrote, which those skills
+read, and the `nextjs-playbook-rules` skill, which they consult while writing
+code. Recommend it to the user if it is not installed.
 
 ## Guardrails
 
