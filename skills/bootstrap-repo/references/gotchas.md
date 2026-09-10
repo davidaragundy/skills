@@ -6,6 +6,11 @@ the section for the step you are on before you start it.
 
 Each entry: **symptom** → cause → fix.
 
+Each entry was true for the tool versions of its day. Apply a fix only once you
+see its symptom, and if the tool's current documentation describes a different
+fix, or says the problem is gone, follow the documentation. The same goes for
+any version an entry names: look up the current one.
+
 ## Pipeline
 
 **`tsc --noEmit` fails on a fresh clone with `Cannot find name 'LayoutProps'`.**
