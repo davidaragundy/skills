@@ -1,18 +1,20 @@
 ---
-name: bootstrap-repo
-description: Sets up a new repository's contribution process, feature-based architecture conventions, git hooks, CI and documentation from a proven baseline. Use when starting a repo or project, or when asked to establish its conventions, commit and branch rules, hooks, or contributing docs.
+name: setup-nextjs-playbook
+description: Sets up a Next.js App Router repository to follow the Next.js playbook — an opinionated feature-based architecture, code standards, and a contribution flow from issue to branch to pull request — with the git hooks, CI and documentation that hold it in place. Run once, when starting a Next.js project, or when asked to establish its architecture, conventions, commit and branch rules, hooks or contributing docs.
 license: MIT
 compatibility: Built for GitHub repositories using pnpm, git and the gh CLI. The architecture and tooling assets target Next.js with the App Router. Runs after setup-matt-pocock-skills from mattpocock/skills.
 metadata:
   author: davidaragundy
-  version: "1.0.0"
+  version: "2.0.0"
 ---
 
-# Bootstrap a repository
+# Set up the Next.js playbook
 
-Turns a fresh repository into one with a written contribution process, a
-feature-based architecture, git hooks, CI, and documents that describe it
-exactly. The rules themselves live in `assets/` as working files; this page is
+The Next.js playbook is an opinionated way to build with Next.js: a
+feature-based architecture, the rules code is written by, and the flow every
+change takes from issue to merge. This skill sets it up, once. It turns a fresh
+repository into one with a written contribution process, that architecture, git
+hooks, CI, and documents that describe it exactly. The rules themselves live in `assets/` as working files; this page is
 the order to apply them in and the bar each step must clear.
 
 Three ideas run through every step:
@@ -126,7 +128,7 @@ and confirm both with the user before writing either.
 
 ## 2. Track the work
 
-Open one issue for the bootstrap with the feature request form's sections —
+Open one issue for setting up the playbook with the feature request form's sections —
 Problem, Proposed change, Acceptance criteria, Alternatives considered — and a
 plain-English title prefixed `[Request]:`. Cut `chore/{{PREFIX}}-<issue>` from
 `main` and do all of the following on it.
