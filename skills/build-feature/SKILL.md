@@ -33,6 +33,10 @@ step 6. Read [references/gotchas.md](references/gotchas.md) before you start.
 
 ## 1. Read the rules
 
+- The issue the branch is named after, and when it is a ticket from
+  `to-tickets`, its parent spec: the user stories, the implementation decisions
+  and what is out of scope. Neither holds file paths, by design; placing the
+  code is step 3.
 - `docs/code-standards.md`, in full.
 - `CONTEXT.md`, or the layout `docs/agents/domain.md` records.
 - Every ADR in `docs/adr/` touching the area, and
@@ -120,6 +124,10 @@ there.
   [references/sources.md](references/sources.md) cover them.
 - **Dependencies** arrive the day something uses them, installed at their latest
   stable version, and confirmed against their own docs.
+- **Tests.** The playbook installs no test runner. When the ticket or spec asks
+  for automated tests and the repository has none, choosing one is the user's
+  decision: stop and ask. Once a runner exists, the `tdd` skill from
+  mattpocock/skills writes tests at the seams the spec agreed.
 
 **Done when** every file follows the rules that placed it, and every Next.js API
 it uses was checked against the documentation.
@@ -137,6 +145,9 @@ it uses was checked against the documentation.
   its names, and the server rules. `grep -rnE "(from|import) ['\"]\.\.?/" src`
   returns nothing — it catches stylesheet imports too — and no `index.ts`
   re-exports a folder.
+- With the `code-review` skill from mattpocock/skills installed, run it against
+  `main`. It reviews the diff against `docs/code-standards.md` and against the
+  ticket, side by side; fix what it finds on the branch.
 
 **Done when** the checks pass, the change works in the running app, and the
 review of your diff finds nothing.
