@@ -63,6 +63,14 @@ section.
 | `github/PULL_REQUEST_TEMPLATE.md` | [Creating a pull request template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository) | File name and location |
 | `CONTRIBUTING.md` | [Conventional Commits](https://www.conventionalcommits.org/) | The current specification version |
 
+`docs/agents/` and the `## Agent skills` block are not assets: they come from
+[`setup-matt-pocock-skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills),
+which owns their format. Read the files it wrote in this repository, never its
+templates or a remembered version of them. `CONTEXT.md` and the ADR follow the
+formats in its sibling
+[`domain-modeling`](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)
+skill; check them there.
+
 `CONTEXT.md`, `README.md` and the ADR configure no tool, so they have no row.
 What they name — scripts, commands, files — is checked by step 5's completion
 criterion.

@@ -2,7 +2,7 @@
 name: bootstrap-repo
 description: Sets up a new repository's contribution process, feature-based architecture conventions, git hooks, CI and documentation from a proven baseline. Use when starting a repo or project, or when asked to establish its conventions, commit and branch rules, hooks, or contributing docs.
 license: MIT
-compatibility: Built for GitHub repositories using pnpm, git and the gh CLI. The architecture and tooling assets target Next.js with the App Router.
+compatibility: Built for GitHub repositories using pnpm, git and the gh CLI. The architecture and tooling assets target Next.js with the App Router. Runs after setup-matt-pocock-skills from mattpocock/skills.
 metadata:
   author: davidaragundy
   version: "1.0.0"
@@ -34,6 +34,44 @@ Read [references/gotchas.md](references/gotchas.md) before you start. Every
 entry in it is a trap that looked like success the first time. Read
 [references/sources.md](references/sources.md) too: it names the official source
 to check for each asset, and what to look for there.
+
+## Prerequisite: setup-matt-pocock-skills
+
+This skill runs after `setup-matt-pocock-skills` from
+[mattpocock/skills](https://github.com/mattpocock/skills). That skill records
+where issues live, the triage label vocabulary and the domain doc layout, and
+the engineering skills read them from there. This one builds on the same
+records rather than deciding them again.
+
+Before step 1, check that the setup has run:
+
+- `docs/agents/issue-tracker.md` and `docs/agents/domain.md` exist.
+- `CLAUDE.md` or `AGENTS.md` holds an `## Agent skills` block pointing at them.
+
+If any is missing, stop. The setup skill cannot be invoked by a model, so give
+the user the command to install it, ask them to run `/setup-matt-pocock-skills`
+themselves, and wait:
+
+```bash
+npx skills add https://github.com/mattpocock/skills --skill setup-matt-pocock-skills
+```
+
+Go on without it only when the user explicitly says to. Then skip every use of
+`docs/agents/` below, and leave `docs/agents/` out of the README.
+
+Once it has run, read what it recorded, and stop to tell the user when it
+conflicts with this skill:
+
+- **Issue tracker.** This baseline — issue forms, `Closes #<issue>`, CODEOWNERS,
+  CI — assumes GitHub Issues. Any other tracker is a conflict.
+- **Domain docs.** This baseline writes one `CONTEXT.md` and one `docs/adr/` at
+  the root, and one `app/`, `features/`, `shared/` tree under `src/`. A
+  multi-context layout is a conflict.
+- **Triage labels.** When `docs/agents/triage-labels.md` exists, use its label
+  for the `needs-triage` role wherever the assets say `needs-triage`.
+
+**Done when** the setup's files exist and neither conflict applies, or the user
+has said to go on without them.
 
 ## Placeholders
 
@@ -94,7 +132,8 @@ plain-English title prefixed `[Request]:`. Cut `chore/{{PREFIX}}-<issue>` from
 `main` and do all of the following on it.
 
 An empty repository has no `main` to branch from: seed it with a single initial
-commit holding the README, then branch.
+commit holding the README, then branch. If the setup's output is still
+uncommitted, it goes onto this branch as its own commit.
 
 **Done when** the issue exists and you are on its branch.
 
@@ -158,7 +197,12 @@ because each leans on the one before:
 4. `CONTRIBUTING.md` from [assets/CONTRIBUTING.md](assets/CONTRIBUTING.md).
 5. `README.md` from [assets/README.md](assets/README.md).
 6. The issue forms and pull request template under
-   [assets/github/](assets/github/), into `.github/`.
+   [assets/github/](assets/github/), into `.github/`, with the triage label
+   from `docs/agents/triage-labels.md` when it exists.
+
+`CONTEXT.md` and the ADR follow the formats the `domain-modeling` skill in
+mattpocock/skills uses, so the engineering skills can extend them later. Keep
+them in those formats.
 
 Rewrite every example in the assets — `Order`, `order-checkout-form.tsx`,
 `MAX_ORDER_ITEMS` — into the project's own glossary terms. Check every framework
@@ -212,6 +256,11 @@ instead.
   gotcha that contradicts the docs for the installed version is out of date:
   keep its intent, follow the docs, and report the difference. When the docs
   cannot be reached, say so rather than assuming the asset is still right.
+- **The setup's records belong to the setup.** `docs/agents/` and the
+  `## Agent skills` block in `CLAUDE.md` or `AGENTS.md` stay as
+  `setup-matt-pocock-skills` wrote them. Where one needs to change, the user
+  re-runs that skill or edits the file; this skill reads them and reports
+  conflicts.
 - **A dependency arrives the day something uses it.**
 - **A config keeps only what it adds** over the preset it extends.
 - **Every change travels issue → branch → pull request**, your own follow-up

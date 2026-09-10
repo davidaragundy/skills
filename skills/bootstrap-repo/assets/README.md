@@ -45,3 +45,4 @@ than the `packageManager` field pins.
 - [docs/code-standards.md](./docs/code-standards.md) — how code is written here
 - [CONTEXT.md](./CONTEXT.md) — what the words of the domain mean
 - [docs/adr/](./docs/adr/) — decisions that would otherwise look arbitrary
+- [docs/agents/](./docs/agents/) — where agent skills find the issue tracker and domain docs
