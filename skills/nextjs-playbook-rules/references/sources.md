@@ -28,10 +28,10 @@ documentation for the topic rather than skipping the check.
 
 ## Official Next.js skills
 
-Vercel publishes agent skills in the Next.js repository. Where one covers the
-work, prefer it over working from the documentation alone, and recommend it to
-the user when it is not installed. Each states its own requirements; check them
-before recommending it.
+Vercel publishes agent skills in the Next.js repository that cover parts of the
+framework in depth. They are sources like the documentation: they say how
+Next.js works, and leave this repository's rules as they are. Each states its
+own requirements.
 
 | Skill | Covers |
 | --- | --- |
