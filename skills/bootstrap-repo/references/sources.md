@@ -60,7 +60,12 @@ section.
 | `package.fragment.json` → `lint-staged` | [lint-staged](https://github.com/lint-staged/lint-staged) | Config keys and glob behaviour |
 | `docs/code-standards.md` | [Next.js project structure](https://nextjs.org/docs/app/getting-started/project-structure), [Server Actions](https://nextjs.org/docs/app/getting-started/mutating-data), [`use server`](https://nextjs.org/docs/app/api-reference/directives/use-server), [`server-only`](https://nextjs.org/docs/app/getting-started/server-and-client-components) | That every Next.js mechanism a rule names — `server-only`, `"use server"`, the special files, caching — still works as the rule says |
 | `github/ISSUE_TEMPLATE/*` | [Syntax for issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms) | Field types and keys |
+| `github/PULL_REQUEST_TEMPLATE.md` | [Creating a pull request template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository) | File name and location |
 | `CONTRIBUTING.md` | [Conventional Commits](https://www.conventionalcommits.org/) | The current specification version |
+
+`CONTEXT.md`, `README.md` and the ADR configure no tool, so they have no row.
+What they name — scripts, commands, files — is checked by step 5's completion
+criterion.
 
 A link that no longer resolves is itself a sign the tool changed: search the
 tool's site for the topic rather than skipping the check.
