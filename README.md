@@ -4,9 +4,13 @@ Agent skills by [@davidaragundy](https://github.com/davidaragundy), written to t
 [Agent Skills](https://agentskills.io) open standard, so they work in any
 compatible agent — Claude Code, Codex, Cursor, Gemini CLI, OpenCode and others.
 
-Together they make up the **Next.js playbook**: an opinionated way to build with
-Next.js and its current best practices — a feature-based architecture, the rules
-code is written by, and the flow every change takes from issue to merge.
+Together they make up the **Next.js playbook**: opinions about how a Next.js
+repository is structured and the standards its code is written to, following
+Next.js's current best practices. The playbook has no workflow of its own. The
+work — from an idea through spec and tickets to implemented code — follows
+[Matt Pocock's engineering skills](https://github.com/mattpocock/skills), which
+read the playbook's rules as they go. The [workflow guide](docs/workflow.md)
+shows where.
 
 ## Install
 
@@ -33,9 +37,8 @@ npx skills add https://github.com/mattpocock/skills --skill setup-matt-pocock-sk
 
 | Skill                                                   | What it does                                                                                                                                   |
 | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`setup-nextjs-playbook`](skills/setup-nextjs-playbook/) | Sets up a Next.js repository to follow the playbook: the feature-based architecture, code standards, contribution flow, git hooks, CI and documentation. Run once. |
-| [`build-feature`](skills/build-feature/)                 | Writes code the playbook's way: places every file by the feature-based architecture, applies the code standards, and checks Next.js APIs against the current docs. |
-| [`ship-change`](skills/ship-change/)                     | Takes every later change through the playbook's flow: issue, branch, Conventional Commits, pull request, and the check after the merge.        |
+| [`setup-nextjs-playbook`](skills/setup-nextjs-playbook/) | Sets up a Next.js repository with the playbook's feature-based structure, code standards, contribution rules, git hooks, CI and documentation. Run once. |
+| [`nextjs-playbook-rules`](skills/nextjs-playbook-rules/) | The rules for where code goes and how it is written, consulted by whatever is writing code — Matt's `implement` and `tdd` included.            |
 
 ## Layout
 
