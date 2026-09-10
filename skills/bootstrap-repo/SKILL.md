@@ -85,13 +85,20 @@ fresh clone.
 
 ## 4. Automate what is boring
 
-- Install `eslint-plugin-simple-import-sort`, `husky`, `lint-staged`,
-  `@commitlint/cli` and `@commitlint/config-conventional`.
+- Install `prettier` with `--save-exact`, so a formatter release never
+  reformats the codebase unannounced, and `eslint-config-prettier`,
+  `eslint-plugin-simple-import-sort`, `husky`, `lint-staged`, `@commitlint/cli`
+  and `@commitlint/config-conventional`.
 - Replace `eslint.config.mjs` with
   [assets/eslint.config.mjs](assets/eslint.config.mjs), and add
-  [assets/commitlint.config.mjs](assets/commitlint.config.mjs),
-  [assets/prettierrc.json](assets/prettierrc.json) as `.prettierrc` and
+  [assets/commitlint.config.mjs](assets/commitlint.config.mjs) and
   [assets/prettierignore](assets/prettierignore) as `.prettierignore`.
+- If the project uses Tailwind CSS, install `prettier-plugin-tailwindcss` and
+  add [assets/prettierrc.json](assets/prettierrc.json) as `.prettierrc`. Its
+  `tailwindStylesheet` points at the stylesheet holding `@import "tailwindcss"`,
+  relative to `.prettierrc`; drop the key on Tailwind v3, which reads
+  `tailwind.config.js` instead. Without Tailwind, add neither: Prettier's
+  defaults are the configuration.
 - Run `pnpm exec husky init`, then copy the three files in
   [assets/husky/](assets/husky/) into `.husky/` and make each executable.
 - Rewrite every relative import in `src/` through the `@/` alias, stylesheets
