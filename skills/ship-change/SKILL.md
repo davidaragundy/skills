@@ -91,6 +91,9 @@ like.
 
 ## 4. Commit
 
+Code written between steps 3 and 4 follows the repository's code standards; the
+playbook's `build-feature` skill applies them.
+
 - One concern per commit. Stage explicit paths, and read `git diff --staged`
   before each commit.
 - The subject follows the commit convention; the scope is the feature the change
