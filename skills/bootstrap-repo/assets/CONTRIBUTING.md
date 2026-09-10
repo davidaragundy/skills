@@ -119,7 +119,7 @@ A merge that does not satisfy all of this is not acceptable:
 
 ## CI/CD
 
-**GitHub Actions** (`.github/workflows/ci.yml`) runs `pnpm lint`, `pnpm typecheck` and `pnpm test` on every pull request. All three must pass before review.
+**GitHub Actions** (`.github/workflows/ci.yml`) runs `pnpm lint` and `pnpm typecheck` on every pull request. Both must pass before review.
 
 The production build is not run in CI. Nothing else builds it either, so a change
 that breaks `pnpm build` is caught only by whoever runs it — run it yourself when
@@ -143,5 +143,4 @@ Run these before opening a PR. Use pnpm scripts — never `npx`, which can resol
 | ---------------- | -------------------------------- |
 | `pnpm lint`      | eslint across the repository     |
 | `pnpm typecheck` | route types, then `tsc --noEmit` |
-| `pnpm test`      | vitest, once, non-watching       |
 | `pnpm build`     | the production build             |

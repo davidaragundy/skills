@@ -2,7 +2,6 @@
   "scripts": {
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "vitest run --passWithNoTests",
     "prepare": "husky"
   },
   "lint-staged": {

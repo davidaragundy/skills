@@ -32,6 +32,6 @@ migrations, or a note that this is safe and self-contained.
 - [ ] Branch is named `type/{{PREFIX}}-<issue-number>`
 - [ ] Linked issue above, so it closes on merge
 - [ ] Everything is in English
-- [ ] `pnpm lint`, `pnpm typecheck` and `pnpm test` all pass
+- [ ] `pnpm lint` and `pnpm typecheck` both pass
 - [ ] `pnpm build` succeeds, if the change could affect the build
 - [ ] Acceptance criteria on the linked issue are met

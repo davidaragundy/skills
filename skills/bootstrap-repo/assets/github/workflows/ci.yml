@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   verify:
-    name: Lint, typecheck and test
+    name: Lint and typecheck
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -41,7 +41,3 @@ jobs:
       - name: Typecheck
         if: ${{ !cancelled() }}
         run: pnpm typecheck
-
-      - name: Test
-        if: ${{ !cancelled() }}
-        run: pnpm test

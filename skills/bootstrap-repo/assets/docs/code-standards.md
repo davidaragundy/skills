@@ -115,22 +115,6 @@ groups are not kebab-case. _Review._
 `UPPER_SNAKE_CASE` — this last one applies to `MAX_ORDER_ITEMS`, not to every
 `const`. _Review._
 
-## Tests
-
-**CS-20.** Tests sit next to what they test: `header.tsx` and `header.test.tsx`.
-A separate test tree duplicates the whole structure and rots, because a rename
-has to be made in two places. _Review._
-
-**CS-21.** Test external behaviour, not internal shape. A test that asserts a
-configuration object contains a key proves nothing about whether the tool
-rejects anything. _Review._
-
-**CS-22.** `pnpm test` runs in a node environment and covers pure modules:
-schemas, utilities, and logic extracted from components. A DOM environment is
-added the day the first test needs to render a component. **Server Components
-and complete user flows are not covered by anything.** A green pipeline is not evidence that a page works — say so out
-loud rather than letting the checkmark imply it. _Review._
-
 ## What the tooling actually does
 
 | Check                                      | Runs where                               |
@@ -139,7 +123,6 @@ loud rather than letting the checkmark imply it. _Review._
 | Import order                               | `pre-commit`, on staged files, autofixed |
 | Framework lint rules                       | `pre-commit` and CI                      |
 | Types                                      | CI                                       |
-| Unit tests                                 | CI                                       |
 | Commit message format                      | `commit-msg`                             |
 | Branch name, and refusing pushes to `main` | `pre-push`                               |
 

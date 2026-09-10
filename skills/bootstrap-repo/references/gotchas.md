@@ -29,7 +29,7 @@ TypeScript major upgrade.
 
 **Everything passes locally and fails in CI.** `.next/` and `next-env.d.ts` from
 earlier runs mask missing generated files. → Verify from a **fresh clone**:
-`rm -rf .next next-env.d.ts`, then lint, typecheck, test and build.
+`rm -rf .next next-env.d.ts`, then lint, typecheck and build.
 
 **Review is never requested from anyone.** `CODEOWNERS` written as a markdown
 list item (`- @owner`) is not a rule. → It needs a path pattern: `* @owner`.
