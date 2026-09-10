@@ -8,6 +8,10 @@ Together they make up the **Next.js playbook**: an opinionated way to build with
 Next.js and its current best practices — a feature-based architecture, the rules
 code is written by, and the flow every change takes from issue to merge.
 
+The playbook runs alongside Matt Pocock's engineering skills: they turn an idea
+into a spec and tickets, and the playbook builds and ships each ticket. The
+[workflow guide](docs/workflow.md) walks through it end to end.
+
 ## Install
 
 ```bash
