@@ -58,7 +58,13 @@ A change belongs to exactly one issue.
 
 - **Review follow-up on an open pull request:** no new issue and no new branch.
   Check out that pull request's branch and go to step 4.
-- **An issue already covers it:** use it. Search before drafting —
+- **A ticket from `to-tickets`:** it is the issue. Keep its title, template and
+  labels as published; never rewrite it into a form. When the user names a
+  spec rather than a ticket, take the next ticket on its frontier: open,
+  unassigned, and with every ticket in its "Blocked by" closed. A spec that has
+  tickets is never a branch's issue itself.
+- **An issue already covers it:** use it, whether it came from a form or from
+  `to-spec`. Search before drafting —
   `gh issue list --state open --search "<words>"` — and read a candidate with
   `gh issue view <n> --comments`.
 - **Otherwise, draft one:**
@@ -80,6 +86,9 @@ like.
 ## 3. Cut the branch
 
 - Start from a clean tree, or one whose uncommitted work belongs to this change.
+  Edits `grill-with-docs` left in `CONTEXT.md` or `docs/adr/` belong to the
+  first ticket of the spec they shaped: carry them onto its branch, and commit
+  them there as their own `docs` commit.
 - `git switch main && git pull --ff-only`, then
   `git switch -c <type>/<prefix>-<issue>`.
 - The type is the one you expect the pull request's title to carry. Check the
@@ -153,12 +162,17 @@ unless the user asks. Once it is merged:
    files are there.
 3. `gh issue view <issue> --json state`. An issue still open means the
    description lacked its closing keyword; tell the user.
-4. Delete the branch: `git branch -D <branch>` once step 1 matched, the remote
+4. When the issue is a ticket, check its parent spec: list the spec's
+   sub-issues, or the issues whose Parent section names it. Once every one is
+   closed, tell the user the spec can close — `to-tickets` never closes it, and
+   no pull request does.
+5. Delete the branch: `git branch -D <branch>` once step 1 matched, the remote
    branch with `git push origin --delete <branch>` if it still exists, then
    `git fetch --prune`.
 
-**Done when** the merged head matches your tip, the issue is closed, and the
-branch is gone locally and on the remote.
+**Done when** the merged head matches your tip, the issue is closed, the user
+knows whether its spec can close, and the branch is gone locally and on the
+remote.
 
 ## Guardrails
 
