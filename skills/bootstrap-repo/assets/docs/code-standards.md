@@ -55,7 +55,7 @@ new area of the domain exists. _Review._
 kinds:
 
 `components`, `hooks`, `schemas`, `types`, `constants`, `queries`, `actions`,
-`utils`
+`utils`, `styles`
 
 The list may grow, but only for a concept that does not already have a word —
 one word per concept. `lib/`, `services/` and `helpers/` are therefore excluded:
