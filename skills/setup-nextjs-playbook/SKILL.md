@@ -239,8 +239,8 @@ merged branch.
 **Done when** the merged head matches your tip and the branch is gone.
 
 Every later change takes the same road. The playbook's `ship-change` skill
-takes it from issue to cleanup; recommend it to the user if it is not
-installed.
+takes it from issue to cleanup, and `build-feature` writes the code in between;
+recommend them to the user if they are not installed.
 
 ## Guardrails
 
